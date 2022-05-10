@@ -1,0 +1,39 @@
+import turtle
+screen = turtle.Screen()
+dummy = turtle.Turtle('turtle')
+screen.addshape('giphy donut.gif')
+dummy.shape('giphy donut.gif')
+screen.setup()
+dummy.speed(1000)
+dummy.penup()
+print(dummy.xcor())
+dummy.penup()
+dummy.pendown()
+writer = turtle.Turtle()
+writer.hideturtle()
+writer.penup()
+writer.goto(200, 200)
+donuts = 0
+dummy.pencolor('black')
+def click(x,y):
+#     if x>-100 and x<100 and y>-100 and y<100:
+    turtle.tracer(0)
+    writer.clear()
+    global donuts
+    donuts +=1
+    print(donuts)
+    turtle.tracer(1)
+    writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
+dummy.onclick(click)
+
+
+
+turtle.mainloop()
+turtle.listen()
+
+
+
+
+
+
+
