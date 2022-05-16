@@ -1,10 +1,12 @@
 import turtle
-turtle.title('Donut Tapper')
+import math
+from time import sleep
 screen = turtle.Screen()
 dummy = turtle.Turtle('turtle')
+a = 1
+#cookies per click
 screen.addshape('giphy donut.gif')
 dummy.shape('giphy donut.gif')
-#the file in the parenthasis has to be changed to whatever local file you are using for the donut
 screen.setup()
 dummy.speed(1000)
 dummy.penup()
@@ -15,25 +17,33 @@ writer = turtle.Turtle()
 writer.hideturtle()
 writer.penup()
 writer.goto(200, 200)
-donuts = 0
+donuts = 10000000
 dummy.pencolor('black')
-def click(x,y):
+has_clicker = True
+clickers = 1
+while True:
     turtle.tracer(0)
     writer.clear()
-    global donuts
-    donuts +=1
-    print(donuts)
-    turtle.tracer(1)
     writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
-dummy.onclick(click)
+    def click(x,y):
+        global donuts
+        global a
+        global donuts_trunc
+        donuts += a
+        writer.clear()
+        writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
+    dummy.onclick(click)
+    if has_clicker == True:
+        donuts += 0.1*clickers
+    
+    sleep(0.1)
+    writer.clear()
+    writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
 
 
 
 turtle.mainloop()
 turtle.listen()
-
-
-
 
 
 
