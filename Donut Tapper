@@ -17,14 +17,25 @@ writer = turtle.Turtle()
 writer.hideturtle()
 writer.penup()
 writer.goto(200, 200)
-donuts = 0
+donuts = 1
 dummy.pencolor('black')
-has_clicker = True
-clickers = 1
+clickers = 0
+
+writer2 = turtle.Turtle('turtle')
+screen.addshape('blackbox.gif')
+writer2.shape('blackbox.gif')
+writer2.penup()
+writer2.hideturtle()
+writer2.goto(-600,300)
+writer2.showturtle()
 while True:
     turtle.tracer(0)
     writer.clear()
     writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
+    def add_clicker(x,y):
+        global clickers
+        clickers +=1
+    writer2.onclick(add_clicker)
     def click(x,y):
         global donuts
         global a
@@ -33,8 +44,7 @@ while True:
         writer.clear()
         writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
     dummy.onclick(click)
-    if has_clicker == True:
-        donuts += 0.1*clickers
+    donuts += 0.01*clickers
     
     sleep(0.1)
     writer.clear()
@@ -44,6 +54,9 @@ while True:
 
 turtle.mainloop()
 turtle.listen()
+
+
+
 
 
 
