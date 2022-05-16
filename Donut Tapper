@@ -17,7 +17,7 @@ writer = turtle.Turtle()
 writer.hideturtle()
 writer.penup()
 writer.goto(200, 200)
-donuts = 10000000
+donuts = 0
 dummy.pencolor('black')
 has_clicker = True
 clickers = 1
