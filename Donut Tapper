@@ -1,7 +1,12 @@
 import turtle
 import math
 from time import sleep
+sleep(1)
+print('Hello, before the game starts you should kno')
 screen = turtle.Screen()
+screen.title('Donut Tapper')
+root = turtle.Screen()._root
+root.iconbitmap("Cat with a wierd face.jpg")
 dummy = turtle.Turtle('turtle')
 a = 1
 #cookies per click
@@ -17,7 +22,7 @@ writer = turtle.Turtle()
 writer.hideturtle()
 writer.penup()
 writer.goto(200, 200)
-donuts = 1
+donuts = 1000000
 dummy.pencolor('black')
 clickers = 0
 gamer_mice = 0
@@ -68,6 +73,12 @@ while True:
         if donuts >= 1000:
             autoclickers += 1
             donuts -= 1000
+    def add_shop(x,y):
+        global shops
+        global donuts
+        if donuts >= 5000:
+            shops += 1
+            donuts -= 5000
     
         
             
@@ -79,6 +90,8 @@ while True:
     writer2.onclick(add_clicker)
     writer3.onclick(add_gamer_mouse)
     writer4.onclick(add_autoclicker)
+    writer5.onclick(add_shop)
+    
     def click(x,y):
         global donuts
         global a
@@ -88,8 +101,10 @@ while True:
         writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
     dummy.onclick(click)
     donuts += 0.01*clickers
-    donuts += 1*gamer_mice
-    donuts += 10*autoclickers
+    donuts += 0.1*gamer_mice
+    donuts += 1*autoclickers
+    donuts += 5+shops
+    #every number you are adding for the upgrades needs to be divided by 10 since it refreshes every 0.1 second and not 1
     sleep(0.1)
     writer.clear()
     writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
