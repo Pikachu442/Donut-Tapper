@@ -35,6 +35,7 @@ while True:
     def add_clicker(x,y):
         global clickers
         global donuts
+        #you need to do the global thing for all variables in def statements for some reason
         if donuts >= 20:
             clickers += 1
             donuts -= 20
