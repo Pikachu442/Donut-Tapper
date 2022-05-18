@@ -20,14 +20,31 @@ writer.goto(200, 200)
 donuts = 1
 dummy.pencolor('black')
 clickers = 0
+gamer_mice = 0
+autoclickers = 0
+shops = 0
 
 writer2 = turtle.Turtle('turtle')
-screen.addshape('blackbox.gif')
-writer2.shape('blackbox.gif')
+writer3 = turtle.Turtle('turtle')
+writer4 = turtle.Turtle('turtle')
+writer5 = turtle.Turtle('turtle')
+turtle.tracer(0)
+screen.addshape('images.gif')
+writer2.shape('images.gif')
+writer3.shape('images.gif')
+writer4.shape('images.gif')
+writer5.shape('images.gif')
 writer2.penup()
+writer3.penup()
+writer4.penup()
+writer5.penup()
 writer2.hideturtle()
 writer2.goto(-600,300)
+writer3.goto(-600,150)
+writer4.goto(-600,0)
+writer5.goto(-600,-150)
 writer2.showturtle()
+turtle.tracer(1)
 while True:
     turtle.tracer(0)
     writer.clear()
@@ -39,7 +56,19 @@ while True:
         if donuts >= 20:
             clickers += 1
             donuts -= 20
-        
+    def add_gamer_mouse(x,y):
+        global gamer_mice
+        global donuts
+        if donuts >= 100:
+            gamer_mice +=1
+            donuts -= 100
+    def add_autoclicker(x,y):
+        global autoclickers
+        global donuts
+        if donuts >= 1000:
+            autoclickers += 1
+            donuts -= 1000
+    
         
             
         
@@ -48,6 +77,8 @@ while True:
             
             
     writer2.onclick(add_clicker)
+    writer3.onclick(add_gamer_mouse)
+    writer4.onclick(add_autoclicker)
     def click(x,y):
         global donuts
         global a
@@ -57,7 +88,8 @@ while True:
         writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
     dummy.onclick(click)
     donuts += 0.01*clickers
-    
+    donuts += 1*gamer_mice
+    donuts += 10*autoclickers
     sleep(0.1)
     writer.clear()
     writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
