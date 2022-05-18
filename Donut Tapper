@@ -34,7 +34,18 @@ while True:
     writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
     def add_clicker(x,y):
         global clickers
-        clickers +=1
+        global donuts
+        if donuts >= 20:
+            clickers += 1
+            donuts -= 20
+        
+        
+            
+        
+            
+            
+            
+            
     writer2.onclick(add_clicker)
     def click(x,y):
         global donuts
@@ -54,6 +65,7 @@ while True:
 
 turtle.mainloop()
 turtle.listen()
+
 
 
 
