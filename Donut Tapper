@@ -1,15 +1,16 @@
+#Donut Tapper
+#not copied
 import turtle
 import math
 from time import sleep
-sleep(1)
-print('Hello, before the game starts you should kno')
 screen = turtle.Screen()
+#pictures
 screen.title('Donut Tapper')
 root = turtle.Screen()._root
-root.iconbitmap("Cat with a wierd face.jpg")
+# this was supposed to work, but i couldn't actually get it to display the image, just the icon of the image
+# root.iconbitmap(photo path)
 dummy = turtle.Turtle('turtle')
 a = 1
-#cookies per click
 screen.addshape('giphy donut.gif')
 dummy.shape('giphy donut.gif')
 screen.setup()
@@ -28,17 +29,20 @@ clickers = 0
 gamer_mice = 0
 autoclickers = 0
 shops = 0
-
+#setup
 writer2 = turtle.Turtle('turtle')
 writer3 = turtle.Turtle('turtle')
 writer4 = turtle.Turtle('turtle')
 writer5 = turtle.Turtle('turtle')
 turtle.tracer(0)
-screen.addshape('images.gif')
-writer2.shape('images.gif')
-writer3.shape('images.gif')
-writer4.shape('images.gif')
-writer5.shape('images.gif')
+screen.addshape('donut shop.gif')
+screen.addshape('Cursor.gif')
+screen.addshape('gamer mouse.gif')
+screen.addshape('red cursor.gif')
+writer2.shape('Cursor.gif')
+writer3.shape('gamer mouse.gif')
+writer4.shape('red cursor.gif')
+writer5.shape('donut shop.gif')
 writer2.penup()
 writer3.penup()
 writer4.penup()
@@ -50,35 +54,94 @@ writer4.goto(-600,0)
 writer5.goto(-600,-150)
 writer2.showturtle()
 turtle.tracer(1)
+#cookies per click
+dps = 0
+dps = float(dps)
+unpaid_worker = turtle.Turtle()
+clicker_counter= turtle.Turtle()
+clicker_counter.hideturtle()
+clicker_counter.penup()
+clicker_counter.goto(230,85)
+mouse_counter= turtle.Turtle()
+mouse_counter.hideturtle()
+mouse_counter.penup()
+mouse_counter.goto(230,75)
+clicker_counter= turtle.Turtle()
+clicker_counter.hideturtle()
+clicker_counter.penup()
+clicker_counter.goto(230,85)
+
+write_one_thing = turtle.Turtle()
+write_one_thing.penup()
+write_one_thing.speed(1000)
+write_one_thing.hideturtle()
+write_one_thing.goto(200, 110)
+write_one_thing.forward(100)
+write_one_thing.write('Buildings:')
+
+
+
+unpaid_worker.hideturtle()
+unpaid_worker.penup()
+unpaid_worker.goto(200,150)
+unpaid_worker.pendown()
+#main loop
 while True:
+    unpaid_worker.clear()
+    unpaid_worker.write('Dps: '+str(dps))
+    if clickers > 0:
+        clicker_counter.clear()
+        clicker_counter.write('Clickers: '+str(clickers))
+    turtle.tracer(1)
     turtle.tracer(0)
     writer.clear()
     writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
     def add_clicker(x,y):
         global clickers
         global donuts
+        global dps
         #you need to do the global thing for all variables in def statements for some reason
         if donuts >= 20:
             clickers += 1
             donuts -= 20
+            dps += 0.1
+            writer.clear()
+            writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
     def add_gamer_mouse(x,y):
         global gamer_mice
         global donuts
+        global dps
         if donuts >= 100:
             gamer_mice +=1
             donuts -= 100
+            dps += 1
+            writer.clear()
+            writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
     def add_autoclicker(x,y):
         global autoclickers
         global donuts
+        global dps
         if donuts >= 1000:
             autoclickers += 1
             donuts -= 1000
+            dps += 5
+            writer.clear()
+            writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
     def add_shop(x,y):
         global shops
         global donuts
+        global dps
         if donuts >= 5000:
             shops += 1
             donuts -= 5000
+            dps += 10
+            writer.clear()
+            writer.write('Donuts: '+ str(donuts), font = ('arial',30,'normal'))
+    
+    
+                        
+    
+    
     
         
             
@@ -86,12 +149,12 @@ while True:
             
             
             
-            
+    #onclick stuff 
     writer2.onclick(add_clicker)
     writer3.onclick(add_gamer_mouse)
     writer4.onclick(add_autoclicker)
     writer5.onclick(add_shop)
-    
+    #click function
     def click(x,y):
         global donuts
         global a
@@ -103,7 +166,7 @@ while True:
     donuts += 0.01*clickers
     donuts += 0.1*gamer_mice
     donuts += 1*autoclickers
-    donuts += 5+shops
+    donuts += 5*shops
     #every number you are adding for the upgrades needs to be divided by 10 since it refreshes every 0.1 second and not 1
     sleep(0.1)
     writer.clear()
@@ -113,6 +176,7 @@ while True:
 
 turtle.mainloop()
 turtle.listen()
+
 
 
 
